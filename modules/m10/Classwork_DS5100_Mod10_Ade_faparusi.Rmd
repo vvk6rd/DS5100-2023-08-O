@@ -1,0 +1,106 @@
+---
+title: "DS5100 Classwork 10.1"
+author: "Ade Faparusi"
+date: "2023-10-31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+**Exercise 10.1 **
+```{r}
+fibo_list <- integer(10)
+fibo_list[1] <- 1
+fibo_list[2] <- 1
+for (i in 3:10) { 
+  fibo_list[i] <- fibo_list[i - 2] + fibo_list[i - 1]
+}
+
+print(fibo_list)
+```
+**Exercise 10.2 **
+```{r}
+get_fibonnaci <- function(n){
+  fibo_list <- integer(n)
+  fibo_list[1] <- 1
+  fibo_list[2] <- 1
+  for (i in 3:n) {
+    fibo_list[i] <- fibo_list[i - 2] + fibo_list[i - 1]
+    }
+
+  return (fibo_list)
+}
+```
+```{r}
+get_fibonnaci(10)
+```
+
+**Exercise 10.3 **
+
+```{r}
+func_a <-function(x){
+  if(x>=0 & x<=1){
+    return(1)
+  }
+  else{
+    return(0)
+  }
+}
+```
+
+
+**Exercise 10.4 **
+
+```{r}
+func_a(5)
+func_a(0)
+func_a(1)
+func_a(2)
+```
+
+**Exercise 10.5 **
+
+
+```{r}
+letters[1:10]
+LETTERS[17:26]
+LETTERS[22:24]
+```
+**Exercise 10.6 **
+
+```{r}
+for (i in 1:100) { 
+  if(i%%15==0){
+    print(paste(i,"FizzBuzz"))
+  }
+  else if (i %% 3 ==0){
+    print(paste(i,"Fizz"))
+  }
+  else if (i %% 5 == 0){
+    print(paste(i,"Buzz"))
+  }
+  else print(paste(i))
+}
+  
+  
+```
+
+
+**Exercise 10.7 **
+
+```{r}
+string_1 <- "The class is ending in ten minutes"
+string_2 <-unlist(strsplit(tolower(string_1),' '))
+print(unique(string_2))
+```
+
+**Exercise 10.8 **
+
+```{r}
+vector_1 <- c(15,-5,25,125,-20,30, 45,56,34)
+print(paste(max(vector_1)," is the maximum of the vector"))
+print(paste(min(vector_1)," is the minimum of the vector"))
+
+```
+
