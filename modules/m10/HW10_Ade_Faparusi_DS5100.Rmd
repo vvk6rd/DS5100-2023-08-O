@@ -17,7 +17,8 @@ output: pdf_document
 
     Name:Ade Faparusi   
     Ned ID:vvk6rd
-    URL of this file on GitHub:
+    URL of this file on GitHub: https://github.com/vvk6rd/DS5100-2023-08-O/blob/main/modules/m10/
+    HW10_Ade_Faparusi_DS5100.Rmd
 
 # Instructions
 
@@ -151,7 +152,8 @@ calc_payout <- function(frac_qtrly_quota){
   # Calculate fractional ratio in bracket and cumulative payout before bracket
   if(brkt_index > 1) {
     full_pay <- frame$bracket_cumu_payout[brkt_index -1]
-    fract_ratio <- ((frac_qtrly_quota - frame$bracket_cumu_thresh[brkt_index-1]) / frame$bracket_thresh[brkt_index])
+    fract_ratio <- ((frac_qtrly_quota - frame$bracket_cumu_thresh[brkt_index-1])
+                    / frame$bracket_thresh[brkt_index])
   } 
   else {
     full_pay <- 0
@@ -202,6 +204,8 @@ Hint: for both axes, use the cumulative sums, which you should have
 defined above.
 
 ```{r}
+library(ggplot2)
+
 ggplot(data = df,aes(x = bracket_cumu_amount,y = bracket_cumu_payout))+
   geom_line() +
   geom_point() +
