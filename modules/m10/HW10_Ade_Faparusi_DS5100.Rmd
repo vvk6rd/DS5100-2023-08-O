@@ -143,31 +143,28 @@ the appropriate row in your first dataframe to get the answer.
 ```{r}
 
 calc_payout <- function(frac_qtrly_quota){
-  frame<- df
   
   #Get bracket where we need fractional calculation
-  frame$factor1 <- ifelse(bracket_cumu_thresh<frac_qtrly_quota, 1, 0)
-  brkt_index <-1 + sum(frame$factor1) #fract
+  brkt_index <- 1 + nrow(df[df$bracket_cumu_thresh < frac_qtrly_quota,])
   
   # Calculate fractional ratio in bracket and cumulative payout before bracket
   if(brkt_index > 1) {
-    full_pay <- frame$bracket_cumu_payout[brkt_index -1]
-    fract_ratio <- ((frac_qtrly_quota - frame$bracket_cumu_thresh[brkt_index-1])
-                    / frame$bracket_thresh[brkt_index])
+    full_pay <- df$bracket_cumu_payout[brkt_index -1]
+    fract_ratio <- ((frac_qtrly_quota - df$bracket_cumu_thresh[brkt_index-1])
+                    / df$bracket_thresh[brkt_index])
   } 
   else {
     full_pay <- 0
-    fract_ratio <- frac_qtrly_quota/frame$bracket_thresh[brkt_index]
+    fract_ratio <- frac_qtrly_quota/df$bracket_thresh[brkt_index]
   }
   
   #Calculate total dollar earned
-  fract_pay <- fract_ratio * frame$bracket_payout[brkt_index]
+  fract_pay <- fract_ratio * df$bracket_payout[brkt_index]
   total_payout <- full_pay + fract_pay
   
   return(total_payout)
 }
 ```
-
 
 
 # Task 3
