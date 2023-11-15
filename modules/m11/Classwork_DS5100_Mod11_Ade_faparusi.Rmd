@@ -1,0 +1,124 @@
+---
+title: "DS5100_Classwork_Module11"
+author: "Ade Faparusi"
+date: "2023-11-15"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+**Qn 11.1 **
+```{r}
+library(tidyverse)
+```
+**Qn 11.2 **
+```{r}
+scores <- 
+  tibble(
+    name = c("mike", "carol", "greg", "marcia", "peter", "jan", "bobby", "cindy", "alice"),
+    school = c("south", "south", "south", "south", "north", "north", "north", "south", "south"),
+    teacher = c("johnson", "johnson", "johnson", "johnson",  "smith", "smith", "smith", "perry", "perry"),
+    sex = c("male", "female", "male", "female", "male", "female", "male", "female", "female"),
+    math_score = c(4, 3, 2, 4, 3, 4, 5, 4, 5),
+    reading_score = c(1, 5, 2, 4, 5, 4, 1, 5, 4)
+)
+```
+
+
+**Qn 11.3 **
+
+```{r}
+scores
+```
+**Qn 11.4 **
+```{r}
+scores%>%slice(1:3)
+#scores%>%head(3)
+```
+
+```{r}
+scores_first_3 <- scores%>%slice(1:3)
+
+```
+
+**Qn 11.5 **
+```{r}
+scores%>%arrange(desc(math_score))
+```
+
+**Qn 11.6 **
+```{r}
+scores%>%arrange(name)
+```
+
+**Qn 11.7 **
+
+```{r}
+scores%>%arrange(sex)
+```
+
+**Qn 11.8 **
+
+```{r}
+scores%>%arrange(school, teacher, sex, math_score,reading_score)
+```
+
+**Qn 11.9 **
+
+```{r}
+scores%>%select(name, math_score, reading_score)
+```
+
+**Qn 11.10 **
+
+```{r}
+scores%>%select(-sex)
+```
+
+**Qn 11.11 **
+
+```{r}
+scores%>%select(-math_score, -reading_score)
+```
+**Qn 11.12 **
+
+```{r}
+scores%>%select(sex, everything())
+```
+
+**Qn 11.13 **
+
+```{r}
+scores%>%filter(sex=="male" & school == "south")
+```
+
+**Qn 11.14 **
+
+```{r}
+scores%>%filter(math_score > mean(math_score))
+```
+
+
+
+**Qn 11.15 **
+
+```{r}
+scores%>%filter(math_score >= 4, reading_score >=3)
+```
+
+**Qn 11.16 **
+
+```{r}
+scores%>%filter(math_score <= 3| reading_score <=3)
+```
+
+
+**Qn 11.19 **
+
+```{r}
+scores%>%group_by(teacher)%>%
+  filter(max(math_score) == 5)
+```
