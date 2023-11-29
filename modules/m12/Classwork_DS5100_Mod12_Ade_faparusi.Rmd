@@ -1,0 +1,105 @@
+---
+title: "DS5100_Module12_Classwork_Ade"
+author: "Ade Faparusi"
+date: "2023-11-29"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(vctrs)
+library(tidyverse)
+ 
+```
+
+
+
+**Exercise 12.1 **
+```{r}
+mpg%>% ggplot()
+```
+**Exercise 12.2 **
+```{r}
+mpg%>%ggplot(aes(x=cyl,y = hwy))+
+  geom_point()
+```
+
+**Exercise 12.3 **
+```{r}
+mpg%>%ggplot(aes(x=class,y = drv))+
+  geom_point()
+```
+They are both categorical variables
+
+
+
+```{r}
+
+```
+
+**Exercise 12.4 **
+
+```{r}
+x <- seq(-6*pi, 6*pi,length.out = 100)
+y <- data.frame(x= x, y = sin(x)/x)
+
+ggplot(data = y, mapping = aes(x = x, y = y))+geom_line()
+```
+
+**Exercise 12.5 **
+
+```{r}
+cars%>%ggplot(aes(x=speed,y = dist))+
+  geom_point()
+```
+
+**Exercise 12.6 **
+
+```{r}
+cars%>%ggplot(aes(x=speed,y = dist))+
+  geom_point(mapping = aes(color = dist > 80))
+```
+
+
+
+**Exercise 12.7 **
+
+```{r}
+cars%>%ggplot(aes(x=speed,y = dist))+
+  geom_point(mapping = aes(color = dist > 80))+
+scale_color_manual(values = c("blue", "red"))
+```
+
+**Exercise 12.8 **
+
+```{r}
+cars%>%ggplot(aes(x=speed,y = dist))+
+geom_point(mapping = aes(color = dist > 80))+
+scale_color_manual(values = c("blue", "red"))+ 
+geom_smooth(method = 'lm')
+```
+
+**Exercise 12.9 **
+
+```{r}
+cars%>%ggplot(aes(x=speed))+
+geom_histogram(bins = 10)
+
+```
+```{r}
+cars%>%ggplot(aes(x=dist))+
+geom_histogram(bins = 10)
+
+```
+
+**Exercise 12.10 **
+
+```{r}
+mpg%>%ggplot(aes(x=hwy,y = cty))+
+  geom_point()+
+  facet_grid(drv~cyl)
+
+```
+
